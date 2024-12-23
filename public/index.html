@@ -5,7 +5,7 @@
     <button id="create-post-button">Create Post</button>
 
     <script>
-        const socket = io('http://localhost:5000'); // Connect to your backend
+        const socket = io('https://backend2-c2adbrgzfag7g5he.uksouth-01.azurewebsites.net'); // Connect to your backend
 
         // Get the post feed container
         const postFeed = document.getElementById('post-feed');
@@ -16,7 +16,7 @@
 
         // Function to fetch posts from the server and display them
         function fetchPosts() {
-            fetch('http://localhost:5000/api/posts', {
+            fetch('https://backend2-c2adbrgzfag7g5he.uksouth-01.azurewebsites.net/api/posts', {
                 headers: {
                     'Authorization': `Bearer ${token}` // Sending the JWT token in the Authorization header
                 }
@@ -74,7 +74,7 @@
 
             if (title && content) {
                 // Create a post (for simplicity, this will be sent directly to the server)
-                fetch('http://localhost:5000/api/posts', {
+                fetch('https://backend2-c2adbrgzfag7g5he.uksouth-01.azurewebsites.net/api/posts', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@
 
         // Function to like a post
         function likePost(postId) {
-            fetch(`http://localhost:5000/api/posts/${postId}/like`, {
+            fetch(`https://backend2-c2adbrgzfag7g5he.uksouth-01.azurewebsites.net/api/posts/${postId}/like`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}` // Sending the JWT token in the Authorization header
