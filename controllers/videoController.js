@@ -3,15 +3,14 @@ const Interaction = require('../models/Interaction');
 const SavedVideo = require('../models/SavedVideo'); // Model for saved videos
 // Upload video
 exports.uploadVideo = async (req, res) => {
-  const { title, description ,userId} = req.body;
-
+  const { title, description, userId } = req.body;
 
   try {
-    const videoUrl = req.file.path.replace(/\\/g, '/');
+    const videoUrl = req.file.path.replace(/\\/g, '/'); // Replace backslashes with forward slashes
     const video = new Video({
       title,
       description,
-      videoUrl: req.file.path,
+      videoUrl: videoUrl, // Save the corrected video URL
       userId: req.user.userId,
     });
     await video.save();
@@ -20,6 +19,7 @@ exports.uploadVideo = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 // Fetch all videos
 exports.getVideos = async (req, res) => {
